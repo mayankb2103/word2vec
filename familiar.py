@@ -1,7 +1,7 @@
 import nltk
 import numpy as np
 
-# nltk.download('nps_chat')
+nltk.download('nps_chat')
 import pandas
 from nltk import bigrams
 from nltk.corpus import webtext
