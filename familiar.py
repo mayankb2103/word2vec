@@ -1,18 +1,20 @@
 import nltk
 import numpy as np
 
-nltk.download('nps_chat')
-import pandas
+# nltk.download('nps_chat')
 from nltk import bigrams
 from nltk.corpus import webtext
 fx=webtext.raw(webtext.fileids()[0])
 from nltk.corpus import nps_chat
 chat=nps_chat.posts(nps_chat.fileids()[0])
 print(len(chat))
-fx=fx.replace("\n"," ")
+
 fx=fx.replace("\r","")
-fxl=fx.split(" ")
-print(fxl[:100])
+fxline=fx.splitlines()
+fxcorpus=[]
+for line in fxline:
+    fxcorpus.append(line.split(" "))
+
 
 def generate_co_occurrence_matrix(corpus):
     vocab = set(corpus)
@@ -43,7 +45,6 @@ def generate_co_occurrence_matrix(corpus):
     # return the matrix and the index
     return co_occurrence_matrix, vocab_index
 
-matrix, vocab_index = generate_co_occurrence_matrix(fxl[:15])
+# matrix, vocab_index = generate_co_occurrence_matrix(fxl[:15])
 data_matrix = pandas.DataFrame(matrix, index=vocab_index,
                              columns=vocab_index)
-print(data_matrix)
