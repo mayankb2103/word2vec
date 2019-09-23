@@ -163,12 +163,11 @@ class word2vec():
 fx=webtext.raw(webtext.fileids()[0])
 corpus=fx[:1000]
 print(corpus)
-settings={"train":{"window":2,"epoch":2000,"lr":0.01 }}
+settings={"train":{"window":2,"epoch":3000,"lr":0.01 }}
 w2=word2vec(settings)
 pre_pr=w2.pre_process(corpus,ispara=False)
 # print(corpus)
 training_Data=w2.gen_training_data(pre_pr)
-print(training_Data.shape)
 w2.train(training_Data)
 t_word="phoenix"
 print(w2.word_vec(t_word))
